@@ -1,0 +1,42 @@
+<screens>:
+    MenuScreen:
+        name: 'menu'
+    RandomScreen:
+        name: 'randomsc'
+
+<menuscreen>:
+    BoxLayout:
+        orientation: "vertical"
+        Button:
+            text: 'Iniciar'
+            on_press:
+                app.root.transition.direction = 'right'
+                app.root.current = 'randomsc'
+
+<randomscreen>:
+    random_label: random_label
+    BoxLayout:
+        orientation: "vertical"
+        Label:
+            text: "Números Aleatórios"
+            font_size: 30
+            color: 0, 0.62, 0.96
+
+        Label:
+            id: random_label
+            text: ""
+            font_size: 30
+
+        Button:
+            text: "Gerar"
+            font_size: 15
+            on_press:
+                root.generate_number()
+                random_label.color = 1,1,1
+
+        Button:
+            text: 'Voltar para o Menu'
+            on_press:
+                root.clean_text()
+                app.root.transition.direction = 'left'
+                app.root.current = 'menu'
