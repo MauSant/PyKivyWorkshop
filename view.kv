@@ -1,0 +1,91 @@
+<screens>:
+    MenuScreen:
+        id: menu
+        name:"menu"
+    RandomScreen:
+        id: randomscreen
+        name: "randomscreen"
+    ListRandom:
+        id: listrandom
+        name:"listrandom"
+
+<menuscreen>:
+    BoxLayout:
+        orientation:"vertical"
+        Button:
+            text:"Iniciar"
+            on_press:
+                app.root.transition.direction="right"
+                app.root.current="randomscreen"
+        Button:
+            id: btnExit
+            text: "Exit"
+            on_press: 
+                app.stop() 
+
+<randomscreen>:
+    random_label: random_label #Pra que serve essa linha?
+    BoxLayout:
+        orientation:"vertical"
+        Label:
+            text:"Numeros random"
+            font_size:30
+            color:0,0.62,0.96
+        Label:
+            id:random_label
+            text:""
+            font_size:30
+        Button:
+            text:"Gerar"
+            font_size:15
+            on_press:
+                root.generate_number()
+                random_label.color =1,1,1
+        Button:
+            text:"Voltar ao menuprincipal"
+            on_press:
+                root.clean_text()
+                app.root.transition.direction="left"
+                app.root.current="menu"
+        Button:
+            text:"Exibir os últimos números gerados"
+            on_press:
+                root.clean_text()
+                app.root.transition.direction="right"
+                app.root.current="listrandom"
+
+
+<listrandom>:
+    BoxLayout:
+        orientation:"vertical"
+        Label:
+            id:0
+            text:""
+            font_size:15
+            color:0,0.62,0.96
+        Label:
+            id:1
+            text:""
+            font_size:15
+            color:0,0.62,0.96
+        Label:
+            id:2
+            text:""
+            font_size:15
+            color:0,0.62,0.96
+        Label:
+            id:3
+            text:""
+            font_size:15
+            color:0,0.62,0.96
+        Label:
+            id:4
+            text:""
+            font_size:15
+            color:0,0.62,0.96
+        Button:
+            id:6
+            text:"Voltar a tela de gerar random"
+            on_press:
+                app.root.transition.direction="left"
+                app.root.current="randomscreen"
